@@ -176,7 +176,7 @@ public class EventListener implements Listener{
 				
 				if(var.startsWith(SENDMSG)){
 					
-					sender.sendMessage(var.substring(SENDMSG.length()).replace("&", "¡ì"));
+					sender.sendMessage(var.substring(SENDMSG.length()).replace("&", "Â¡Ã¬"));
 					
 					return null;
 					
@@ -250,19 +250,90 @@ public class EventListener implements Listener{
 	
 	private List<CommandSender> condsToPlayers(String conds){
 		
-		String[] orconds = conds.split("\\|");
+		String[] orconds = split(conds,'|');
 		
 		List<CommandSender>[] orplayers = new ArrayList[orconds.length];
 		
 		for(int i = 0;i < orconds.length;i++) {
 			
-			orplayers[i] = orGroupsPlayers(strGroupsToPlayerGroups(orconds[i].split(":")));
+			orplayers[i] = orGroupsPlayers(strGroupsToPlayerGroups(split(orconds[i],':')));
 			
 		}
 		
 		return addGroupsPlayers(orplayers);
 		
 	}
+	
+	private String[] split(String str, char regex){
+		List<String> list = new ArrayList();
+
+		CharBuffer buffer = CharBuffer.allocate(0);
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == regex){
+				list.add(new String(buffer.array()));
+
+				buffer = CharBuffer.allocate(0);
+			}else if (str.charAt(i) == '{'){
+				A a = turnTo(str, i);
+
+				buffer = extend(buffer, a.str.length() + 2);
+
+				buffer.put("{" + a.str + "}");
+
+				i = a.index;
+			}else{
+				buffer = extend(buffer, 1);
+
+				buffer.put(str.charAt(i));
+			}
+		}
+		return (String[])list.toArray(new String[list.size()]);
+	}
+  
+	private A turnTo(String str, int index){
+		CharBuffer buffer = CharBuffer.allocate(0);
+		for (int i = index + 1; i < str.length(); i++) {
+			if (str.charAt(i) == '{'){
+			A a = turnTo(str, i);
+
+			buffer = extend(buffer, a.str.length() + 2);
+
+			buffer.put("{" + a.str + "}");
+
+			i = a.index;
+			}else{
+				if (str.charAt(i) == '}')
+				{
+				  A a = new A(null);
+
+				  a.str = new String(buffer.array());
+
+				  a.index = i;
+
+				  return a;
+				}
+				buffer = extend(buffer, 1);
+
+				buffer.put(str.charAt(i));
+			}
+		}
+		A a = new A(null);
+
+		a.str = new String(buffer.array());
+
+		a.index = (str.length() - 1);
+
+		return a;
+	}
+  
+  	private CharBuffer extend(CharBuffer buffer, int length){
+	  
+		CharBuffer niw = CharBuffer.allocate(buffer.array().length + length);
+    
+	    	niw.append(new String(buffer.array()));
+		
+    		return niw;
+  	}
 	
 	private List<CommandSender>[] strGroupsToPlayerGroups(String[] groups){
 		
