@@ -787,4 +787,11 @@ public class EventListener implements Listener{
 		
 	}
 	
+	private class A{
+		String str;
+		int index;
+
+		private A() {}
+	}
+	
 }
