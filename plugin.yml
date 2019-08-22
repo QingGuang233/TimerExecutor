@@ -1,11 +1,15 @@
-name: TimerExecute
-main: github.light.TimerExecute.plugin.Main
-version: 1.6
+name: TimerExecutor
+main: com.qing_guang.TimerExecutor.plugin.main.Main
+version: 1.7
 depend: [Vault]
 commands:
   timer:
 permissions:
+  timer_execute.use:
+    default: op
   timer_execute.reload:
     default: op
   timer_execute.test:
+    default: op
+  timer_execute.stop:
     default: op
