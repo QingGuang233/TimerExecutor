@@ -1,41 +1,40 @@
-#ÊÇ·ñ¿ªÆô¼ÙÈË¹¦ÄÜ(µ±Ç°°æ±¾¼ÙÈË´æÔÚÖØ´óbug,Çë²»Òª¿ªÆô,µÈ´ı°æ±¾¸üĞÂĞŞ¸´bugÖ®ºóÔÙ¿ªÆô)
-ena_ficman: false
-
-#Ö¸ÁîÉèÖÃ
+#æŒ‡ä»¤è®¾ç½®
 cmd:
-  #±äÁ¿
+  #å˜é‡
   var:
-    player: '%player%' #ÕıÔÚÖ´ĞĞÖ¸ÁîµÄÍæ¼Ò
-    year: '%year%' #µ±Ç°Ê±¼ä-Äê
-    month: '%month%' #ÔÂ
-    day_for_month: '%day_for_month%' #¼¸ºÅ
-    day_for_week: '%day_for_week%' #ĞÇÆÚ¼¸(Ó¢ÎÄ)
-    hour_twelve: '%hour_for_halfday%' #12Ğ¡Ê±¼ÆÊ±
-    hour_twenty_four: '%hour_for_day%' #24Ğ¡Ê±¼ÆÊ±
-    minute: '%minute%' #·Ö
-    second: '%second%' #Ãë
-  #±êÊ¶ÕâÊÇÖ¸ÏòÒ»¸öÖ¸Áî¿éµÄËùÓĞÖ¸ÁîµÄÇ°×º
+    player: '%player%' #æ­£åœ¨æ‰§è¡ŒæŒ‡ä»¤çš„ç©å®¶
+    year: '%year%' #å½“å‰æ—¶é—´-å¹´
+    month: '%month%' #æœˆ
+    day_for_month: '%day_for_month%' #å‡ å·
+    day_for_week_en: '%day_for_week_en%' #æ˜ŸæœŸå‡ (è‹±æ–‡)
+    day_for_week_zh: '%day_for_week_ch%' #æ˜ŸæœŸå‡ (ä¸­æ–‡)
+    hour_twelve: '%hour_for_halfday%' #12å°æ—¶è®¡æ—¶
+    hour_twenty_four: '%hour_for_day%' #24å°æ—¶è®¡æ—¶
+    minute: '%minute%' #åˆ†
+    second: '%second%' #ç§’
+  #æ ‡è¯†æ­¤æŒ‡ä»¤æ˜¯æŒ‡å‘ä¸€ä¸ªæŒ‡ä»¤å—çš„æŒ‡ä»¤
   cmd_stack: '>'
-  #Ò»Ğ©ÌØÊâµÄÖ¸Áî(delayµÈ)µÄ¿ªÍ·
+  #ä¸€äº›ç‰¹æ®Šçš„æŒ‡ä»¤(delayç­‰)çš„å¼€å¤´
   spi_cmd:
     delay: 'delay'
     sendmsg: 'sendmsg'
 
-#Ìõ¼şÉèÖÃ
+#æ¡ä»¶è®¾ç½®
 conds:
-  #ÆÕÍ¨µÄÌõ¼ş(Èçall)
+  #æ™®é€šçš„æ¡ä»¶(å¦‚all)
   normal_conds:
     all_player: 'all'
-    ficman: 'ficman'
-  #´ø²ÎÊıµÄÌõ¼ş(Èçlocation)
+    fakeman: 'fakeman'
+  #å¸¦å‚æ•°çš„æ¡ä»¶(å¦‚random)
   args_conds:
+    negation_players: 'ngt'
     random_player: 'random'
-    location_players: 'location'
+    area_players: 'area'
     range_players: 'range'
     money_has_players: 'money'
-  #´øÇ°×ºµÄÌõ¼ş(Èç'#')
+  #å¸¦å‰ç¼€çš„æ¡ä»¶(å¦‚'#')
   prefix_conds:
-    gruop_players: '#'
+    group_players: '#'
     wrold_players: '%'
     permission_has_players: '*'
-    conds_file_cond: '$'
+    cond_in_file: '$'
