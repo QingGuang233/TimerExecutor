@@ -1,0 +1,11 @@
+name: TimerExecute
+main: github.light.TimerExecute.plugin.Main
+version: 1.6
+depend: [Vault]
+commands:
+  timer:
+permissions:
+  timer_execute.reload:
+    default: op
+  timer_execute.test:
+    default: op

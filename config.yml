@@ -1,0 +1,41 @@
+#是否开启假人功能(当前版本假人存在重大bug,请不要开启,等待版本更新修复bug之后再开启)
+ena_ficman: false
+
+#指令设置
+cmd:
+  #变量
+  var:
+    player: '%player%' #正在执行指令的玩家
+    year: '%year%' #当前时间-年
+    month: '%month%' #月
+    day_for_month: '%day_for_month%' #几号
+    day_for_week: '%day_for_week%' #星期几(英文)
+    hour_twelve: '%hour_for_halfday%' #12小时计时
+    hour_twenty_four: '%hour_for_day%' #24小时计时
+    minute: '%minute%' #分
+    second: '%second%' #秒
+  #标识这是指向一个指令块的所有指令的前缀
+  cmd_stack: '>'
+  #一些特殊的指令(delay等)的开头
+  spi_cmd:
+    delay: 'delay'
+    sendmsg: 'sendmsg'
+
+#条件设置
+conds:
+  #普通的条件(如all)
+  normal_conds:
+    all_player: 'all'
+    ficman: 'ficman'
+  #带参数的条件(如location)
+  args_conds:
+    random_player: 'random'
+    location_players: 'location'
+    range_players: 'range'
+    money_has_players: 'money'
+  #带前缀的条件(如'#')
+  prefix_conds:
+    gruop_players: '#'
+    wrold_players: '%'
+    permission_has_players: '*'
+    conds_file_cond: '$'
